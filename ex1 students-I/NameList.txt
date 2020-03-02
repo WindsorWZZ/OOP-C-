@@ -1,0 +1,3 @@
+no                  name                score1              score2              score3              average             
+1                   student1             2                   1                   1                   1.33333             
+2                   student2               2                   3                   2                   2.33333             
