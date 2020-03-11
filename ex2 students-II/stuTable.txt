@@ -1,0 +1,5 @@
+name                Chinese             English             Math                
+Windsor             100                 99                  99                  
+mark                100                 97                  NULL                
+stupid              NULL                NULL                100                 
+angel               NULL                99                  NULL                
