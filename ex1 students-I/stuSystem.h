@@ -26,8 +26,12 @@ public:
 	void interaction();
 	void readFile();
 	void writeFile();
+	void updateStat();
 private:
 	vector<student> table;
+	int Sum[3];
+	int Max[3];
+	int Min[3];
 };
 #endif // !STUSYSTEM_H
 

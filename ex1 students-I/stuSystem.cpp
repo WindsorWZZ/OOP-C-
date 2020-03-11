@@ -13,6 +13,7 @@ stuSystem::~stuSystem()
 
 void stuSystem::showTable()
 {
+	system("cls");
 	cout << std::left << setw(20) << "no"
 		<< std::left << setw(20) << "name"
 		<< std::left << setw(20) << "score1"
@@ -27,11 +28,27 @@ void stuSystem::showTable()
 			<< std::left << setw(20) << table[i].score_3
 			<< std::left << setw(20) << table[i].average << endl;
 	}
+	cout << std::left << setw(20) << ' '
+		<< std::left << setw(20) << "Average"
+		<< std::left << setw(20) << Sum[0] / (1.0 * table.size())
+		<< std::left << setw(20) << Sum[1] / (1.0 * table.size())
+		<< std::left << setw(20) << Sum[2] / (1.0 * table.size()) << endl;
+	cout << std::left << setw(20) << ' '
+		<< std::left << setw(20) << "Max"
+		<< std::left << setw(20) << Max[0] 
+		<< std::left << setw(20) << Max[1] 
+		<< std::left << setw(20) << Max[2] << endl;
+	cout << std::left << setw(20) << ' '
+		<< std::left << setw(20) << "Min"
+		<< std::left << setw(20) << Min[0]
+		<< std::left << setw(20) << Min[1]
+		<< std::left << setw(20) << Min[2] << endl;
 	return;
 }
 
 void stuSystem::add()
 {
+	system("cls");
 	student* temp = new student();
 	cout << "what's his/her name?" << endl;
 	cin >> temp->name;
@@ -44,17 +61,20 @@ void stuSystem::add()
 	cout << "input finished" << endl;
 	temp->average = (temp->score_1 + temp->score_2 + temp->score_3) / 3.0;
 	table.push_back(*temp);
+	updateStat();
 	return;
 }
 
 void stuSystem::remove()
 {
+	system("cls");
 	cout << "which one do you want to remove? input a number" << endl;
 	int num;
 	cin >> num;
 	if (num > table.size()) cout << "no such student" << endl;
 	else
 		table.erase(table.begin() + num - 1);
+	updateStat();
 	return;
 }
 
@@ -106,7 +126,9 @@ void stuSystem::readFile()
 		temp->average = (temp->score_1 + temp->score_2 + temp->score_3) / 3.0;
 		table.push_back(*temp);
 	}
+	updateStat();
 	fin.close();
+	return;
 }
 
 void stuSystem::writeFile()
@@ -129,4 +151,44 @@ void stuSystem::writeFile()
 			<< std::left << setw(20) << setfill(' ') << table[i].average << endl;
 	}
 	fout.close();
+}
+
+void stuSystem::updateStat()
+{
+	//update score_1
+	int sum = 0;
+	int max = INT_MIN;
+	int min = INT_MAX;
+	for (int i = 0; i < table.size(); i++) {
+		sum += table[i].score_1;
+		if (table[i].score_1 > max) max = table[i].score_1;
+		if (table[i].score_1 < min) min = table[i].score_1;
+	}
+	Sum[0] = sum;
+	Max[0] = max;
+	Min[0] = min;
+	//update score_2
+	sum = 0;
+	max = INT_MIN;
+	min = INT_MAX;
+	for (int i = 0; i < table.size(); i++) {
+		sum += table[i].score_2;
+		if (table[i].score_2 > max) max = table[i].score_2;
+		if (table[i].score_2 < min) min = table[i].score_2;
+	}
+	Sum[1] = sum;
+	Max[1] = max;
+	Min[1] = min;
+	//update score_3
+	sum = 0;
+	max = INT_MIN;
+	min = INT_MAX;
+	for (int i = 0; i < table.size(); i++) {
+		sum += table[i].score_3;
+		if (table[i].score_3 > max) max = table[i].score_3;
+		if (table[i].score_3 < min) min = table[i].score_3;
+	}
+	Sum[2] = sum;
+	Max[2] = max;
+	Min[2] = min;
 }
