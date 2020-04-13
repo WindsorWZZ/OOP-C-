@@ -27,3 +27,13 @@ Please prepare a zip package including the following items：
 1. the source code
 2. a makefile (Mac, Linux) or exe (Windows), depending on your development environment
 3. an external input file with your test data
+
+# Getting started
+There are three modes in the game adventure:
+1. Quick Start  
+The puzzle size will be set to 10 * 10 and the position of you, the princess and the monster will be randomized. You should input your action step by step to save the princess.
+2. Start  
+You can set the puzzle size and all the positions. Then input your action step by step to save the princess.  
+3. Input file  
+Read a file that **only** contains the actions that you are going to take. The game will return a result of the game.  
+***Tips: ***At each step, you will be notified the distance between you and the princess, you and the monster. The lobby will be marked as ```L```, your current position will be marked as ```O```, the rooms that you have entered will be marked as ```*```, the unknown rooms will remain empty.
